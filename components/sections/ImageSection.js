@@ -4,7 +4,6 @@ import styles from './ImageSection.module.css'
 import { urlFor} from '../../utils/sanityClient'
 import SimpleBlockContent from '../SimpleBlockContent'
 import Cta from '../Cta'
-import Image from 'next/image'
 
 function ImageSection(props) {
   const {heading, label, text, image, cta} = props
@@ -16,7 +15,7 @@ function ImageSection(props) {
   return (
     <div className={styles.root}>
       <figure className={styles.content}>
-        <Image
+        <img
           src={urlFor(image).auto('format').width(2000).url()}
           className={styles.image}
           alt={heading}

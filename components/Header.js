@@ -6,7 +6,6 @@ import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
 import HamburgerIcon from './icons/Hamburger'
 import {getPathFromSlug, slugParamToPath} from '../utils/urls'
-import Image from 'next/image'
 class Header extends Component {
   state = {showNav: false}
 
@@ -40,7 +39,7 @@ class Header extends Component {
       return <SVG src={logo.asset.url} className={styles.logo} />
     }
 
-    return <Image src={logo.asset.url} alt={logo.title} className={styles.logo} />
+    return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
   }
 
   render() {

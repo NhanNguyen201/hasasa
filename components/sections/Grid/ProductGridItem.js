@@ -5,7 +5,6 @@ import { FaTruck } from 'react-icons/fa'
 import Link from 'next/link'
 import { getPathFromSlug } from '../../../utils/urls'
 import OrderModal from "./OrderModal";
-import Image from 'next/image'
 const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 
@@ -14,7 +13,7 @@ const GridItem = ({ gridItem }) => {
     return (
         <div className={styles.item} >
             <div className={styles.imageContainer}>
-                <Image src={urlFor(gridItem.productImage).width(280).url()} className={styles.itemImg}/>
+                <img src={urlFor(gridItem.productImage).width(280).url()} className={styles.itemImg}/>
                 <div className={styles.addToCart}>
                     <button className={styles.addButton} onClick={() => setModalOpen(true)}>Mua</button>
                     {gridItem.isFreeship && <span className={styles.isFreeShip}><FaTruck style={{transform: "translateY(25%)"}}/> - Miễn phí</span>}
