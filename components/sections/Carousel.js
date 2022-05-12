@@ -2,6 +2,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { urlFor } from "../../utils/sanityClient";
 import styles from './Carousel.module.css'
+import Image from "next/image";
 const CarouselBanner = props => {
     const { images, height } = props;
     return (
@@ -17,7 +18,7 @@ const CarouselBanner = props => {
             >
                 {images.map((img) => (
                     <div key={img._key}>
-                        <img src={urlFor(img).width(2000).height(height).url()} />
+                        <Image src={urlFor(img).width(2000).height(height).url()} />
                     </div>
                 ))}
             </Carousel>

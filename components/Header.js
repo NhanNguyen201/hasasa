@@ -6,32 +6,9 @@ import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
 import HamburgerIcon from './icons/Hamburger'
 import {getPathFromSlug, slugParamToPath} from '../utils/urls'
-
+import Image from 'next/image'
 class Header extends Component {
   state = {showNav: false}
-
-//   static propTypes = {
-//     router: PropTypes.shape({
-//       pathname: PropTypes.string,
-//       query: PropTypes.shape({
-//         slug: PropTypes.string,
-//       }),
-//       events: PropTypes.any,
-//     }),
-//     title: PropTypes.string,
-//     navItems: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//         slug: PropTypes.arrayOf(PropTypes.string),
-//       })
-//     ),
-//     logo: PropTypes.shape({
-//       asset: PropTypes.shape({
-//         url: PropTypes.string,
-//       }),
-//       logo: PropTypes.string,
-//     }),
-//   }
 
   componentDidMount() {
     const {router} = this.props
@@ -63,7 +40,7 @@ class Header extends Component {
       return <SVG src={logo.asset.url} className={styles.logo} />
     }
 
-    return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
+    return <Image src={logo.asset.url} alt={logo.title} className={styles.logo} />
   }
 
   render() {
