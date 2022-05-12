@@ -12,7 +12,6 @@
     "@portabletext/react": "^1.0.4",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
-    "babel-plugin-transform-define": "^2.0.1",
     "dotenv": "^16.0.1",
     "groq": "^2.29.3",
     "next": "12.1.0",
