@@ -1,0 +1,68 @@
+.title {
+    font-size: var(--font-title3-size);
+}
+.image {
+    width: 100%;
+}
+.mt-10 {
+    margin-top: 20px;
+}
+.fontSizeBase {
+    font-size: var(--font-base-size);
+
+}
+.redText {
+    color: red;
+    font-weight: 600;
+}
+.lineThroughText {
+    text-decoration: line-through;
+}
+.textInputLabel {
+    font-size: var(--font-base-size);
+    font-weight: 600;
+}
+.noteText {
+    margin-top: 10px;
+    font-size: var(--font-small-size);
+}
+.textInput {
+    font-size: large;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid  black;
+}
+
+.submitBtnContainer {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.submitBtn {
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: var(--font-base-size);
+    font-weight: 600;
+    background-color: rgb(212, 96, 0);
+    cursor: pointer;
+}   
+.select {
+    padding: 5px 20px;
+    font-size: var(--font-base-size);
+    border: none;
+    outline: none;
+    border-bottom: 1px solid  black;
+
+}
+
+.successOrderMsg {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: var(--font-base-size);
+    font-weight: 600;
+    color: rgb(1, 119, 119);
+}

@@ -1,0 +1,17 @@
+@import '../styles/custom-media.css';
+
+.root {
+    padding: 50px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-title3-size);
+    line-height: var(--font-title3-line-height);
+    background-color: aquamarine;
+    max-width: var(--width-small);
+}
+.icon {
+    font-size:var(--font-title3-size);
+    transform: translateY(25%);
+    margin-right: 10px;
+}

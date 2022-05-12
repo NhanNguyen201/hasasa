@@ -1,0 +1,12 @@
+@import "../../styles/custom-media.css";
+
+.root {
+    padding: 1rem 2rem;
+    margin: auto;
+    margin-top: 2rem;
+    max-width: var(--width-large);
+}
+
+.text {
+    font-size: var(--font-title3-size);
+}

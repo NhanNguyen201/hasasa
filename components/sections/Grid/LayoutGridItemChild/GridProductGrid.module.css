@@ -1,0 +1,9 @@
+@import "../../../../styles/custom-media.css";
+.root {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+
+}

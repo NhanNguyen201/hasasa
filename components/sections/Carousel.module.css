@@ -1,0 +1,7 @@
+@import "../../styles/custom-media.css";
+
+.root {
+    margin: auto;
+    margin-top: 2rem;
+    max-width: var(--width-medium);
+}
