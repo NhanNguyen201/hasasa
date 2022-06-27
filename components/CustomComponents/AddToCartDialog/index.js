@@ -112,7 +112,7 @@ const AddToCartDialog = ({isOpen, onRequestClose, productItem}) => {
                     <Grid
                         container 
                         spacing={2}
-                        className={styles['mt-10']}
+                        className={styles.mt10}
                     >
                         <Grid item xs={6}>
                             <FormControl fullWidth >
