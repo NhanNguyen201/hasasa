@@ -20,7 +20,7 @@ const CarouselBanner = props => {
             >
                 {images.map((img) => (
                     <div key={img._key}>
-                        <img src={urlFor(img).width(2000).height(height).fit("crop").crop('focalpoint').url()} />
+                        <img src={urlFor(img).width(1200).height(height).fit("crop").crop('focalpoint').url()} />
                     </div>
                 ))}
             </Carousel>
