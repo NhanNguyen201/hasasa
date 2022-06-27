@@ -1,7 +1,7 @@
 @import "../../styles/custom-media.css";
 
 .root {
-    margin: auto;
+    margin: 1rem auto;
     position: relative;
     max-width: var(--width-large);
 }

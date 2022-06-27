@@ -35,12 +35,12 @@
     border-bottom-right-radius: 3px;
 }
 .itemTitle{
+    height: 2rem;
     width: 100%;
     font-weight: 600;
     font-size: var(--font-base-size);
     line-height: var(--font-base-line-height);
     word-wrap: break-word;
-    /* var(--color-white)-space: nowrap; */
     text-overflow: ellipsis;
 }
 

@@ -86,7 +86,6 @@ const Cart = props => {
         if(isLogedIn) {
             const cartRes = await(await fetch(`/api/cart/get?_userId=${userData._id}`)).json()
             const historyCartsRes = await(await fetch(`/api/cart/historyCart?_userId=${userData._id}`)).json() 
-            console.log("history carts: ", historyCartsRes.carts)
             setUserCart(cartRes)
             setHistoryCart(historyCartsRes.carts)
         } else {

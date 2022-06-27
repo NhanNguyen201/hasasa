@@ -71,7 +71,7 @@ const GridItem = ({ gridItem }) => {
                     : gridItem.title}
                 </div>
                 <div className={styles.itemPrices}>
-                    <span className={styles.itemCurrentPrice}>{gridItem.isDiscount ? numberWithCommas(gridItem.price * (100 - gridItem.discountAmount) / 100) : numberWithCommas(gridItem.price)} đ</span>
+                    <span className={styles.itemCurrentPrice}>{gridItem.isDiscount ? numberWithCommas(gridItem.price * (100 - gridItem.discountAmount || 0) / 100) : numberWithCommas(gridItem.price)} đ</span>
                     {gridItem.isDiscount && <span className={styles.discountPrice}>{numberWithCommas(gridItem.price)} đ</span>}
                 </div>
             </div>
