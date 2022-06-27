@@ -84,7 +84,7 @@ const Login = (props)=> {
             <section className={styles.root}>
                 <div className={styles.formContainer}>
                     <form onSubmit={handleLogin}>
-                        <div className={styles["mt10"]}>
+                        <div className={styles.mt10}>
                             <label >
                                 <span className={styles.textInputLabel}>Username or Phone Number: </span>
                             </label>
@@ -98,7 +98,7 @@ const Login = (props)=> {
 
                             />
                         </div>
-                        <div className={styles["mt10"]}>
+                        <div className={styles.mt10}>
                             <label >
                                 <span className={styles.textInputLabel}>Password: </span>
                             </label>
