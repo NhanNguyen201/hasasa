@@ -33,9 +33,7 @@
     display: block;
     padding: 1.5em;
 
-    @supports (padding-top: env(safe-area-inset-top)) {
-      padding-left: calc(env(safe-area-inset-left) + 1.5rem);
-    }
+    
   }
 
   @nest & img, & svg {
@@ -74,9 +72,7 @@
     padding: 0 1rem;
   }
 
-  @supports (padding-top: env(safe-area-inset-top)) {
-    padding-right: calc(env(safe-area-inset-right) + 1rem);
-  }
+  
 
   @media (--media-max-medium) {
     z-index: 10;

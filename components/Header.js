@@ -122,15 +122,15 @@ const Header = props => {
       <Container maxWidth="lg">
       <Toolbar>
           <Typography
-            variant="h1"
+            variant="p"
             
             className={styles.branding}
             sx={{ flexGrow: 1 }}
           >
-              <Link href={'/'}>
-                <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
-              </Link>
-          </Typography>
+            <Link href={'/'}>
+              <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
+            </Link>
+          </Typography>s
 
           <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
             <ul className={styles.navItems}>
