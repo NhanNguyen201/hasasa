@@ -129,18 +129,18 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                     )}
                     <div className={styles.noteText}>Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất</div>
                     
-                    <TextField className={styles.mt10} label="Tên" variant="outlined" onChange={e => setNameInput(e.target.value)} value={nameInput} fullWidth/>
+                    <TextField style={{marginTop: 10}} label="Tên" variant="outlined" onChange={e => setNameInput(e.target.value)} value={nameInput} fullWidth/>
                     
-                    <TextField className={styles.mt10} label="Sđt" variant="outlined" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber} fullWidth/>
+                    <TextField style={{marginTop: 10}} label="Sđt" variant="outlined" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber} fullWidth/>
                     
-                    <TextField className={styles.mt10} label="Email" variant="outlined" onChange={e => setEmail(e.target.value)} value={email} fullWidth/>
+                    <TextField style={{marginTop: 10}} label="Email" variant="outlined" onChange={e => setEmail(e.target.value)} value={email} fullWidth/>
                     
-                    <TextField className={styles.mt10} label="Địa chỉ" variant="outlined" onChange={e => setAddress(e.target.value)} value={address} fullWidth/>
+                    <TextField style={{marginTop: 10}} label="Địa chỉ" variant="outlined" onChange={e => setAddress(e.target.value)} value={address} fullWidth/>
 
                     <Grid
                         container 
                         spacing={2}
-                        className={styles.mt10}
+                        style={{marginTop: 10}}
                     >
                         <Grid item xs={6}>
                             <FormControl fullWidth >
