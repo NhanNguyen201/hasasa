@@ -1,12 +1,13 @@
 import groq from 'groq'
 import {NextSeo} from 'next-seo'
 import PropTypes from 'prop-types'
-import React from 'react'
-
+import { useEffect } from 'react'
 import { urlFor, client } from '../utils/sanityClient'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
+import { loginAction } from '../redux/action'
+import { useSelector, useDispatch } from 'react-redux';
 
 const pageFragment = groq`
   ...,
@@ -25,6 +26,7 @@ const pageFragment = groq`
       product->,
       productPageRoute->
     },
+    
     product->
 }`
 
@@ -109,7 +111,17 @@ const LandingPage = (props) => {
         },
       ]
     : []
-
+  const { isLogedIn } = useSelector(state => state.user)
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if(!isLogedIn) {
+      const user = localStorage.getItem('hasasaUserData') && JSON.parse(localStorage.getItem('hasasaUserData')) 
+      if(user) {
+        dispatch(loginAction(user))
+      }
+    } 
+  }, [slug])
   return (
     <Layout config={config}>
       <NextSeo
@@ -119,6 +131,7 @@ const LandingPage = (props) => {
         canonical={config.url && `${config.url}/${slug}`}
         openGraph={{
           images: openGraphImages,
+
         }}
         noindex={disallowRobots}
       />

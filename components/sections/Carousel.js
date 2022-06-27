@@ -4,6 +4,9 @@ import { urlFor } from "../../utils/sanityClient";
 import styles from './Carousel.module.css'
 const CarouselBanner = props => {
     const { images, height } = props;
+    if(!images || images.length == 0) {
+        return null
+    }
     return (
         <div className={styles.root}>
             <Carousel 
@@ -17,7 +20,7 @@ const CarouselBanner = props => {
             >
                 {images.map((img) => (
                     <div key={img._key}>
-                        <img src={urlFor(img).width(2000).height(height).url()} />
+                        <img src={urlFor(img).width(2000).height(height).fit("crop").crop('focalpoint').url()} />
                     </div>
                 ))}
             </Carousel>

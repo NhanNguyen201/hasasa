@@ -1,0 +1,8 @@
+.normalText {
+    font-size: var(--font-large-size);
+}
+
+.navItemLink, .navItemLink:hover, .navItemLink:visited, .navItemLink:active {
+    color: inherit;
+    text-decoration: none;
+}

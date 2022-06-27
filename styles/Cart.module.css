@@ -1,0 +1,9 @@
+.root {
+    width: 100%;
+    max-width: var(--width-medium);
+    margin: auto;
+    padding: 10px;
+}
+.cartTable {
+    margin-top: 10px;
+}

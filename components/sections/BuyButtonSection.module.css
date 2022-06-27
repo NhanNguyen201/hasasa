@@ -1,0 +1,9 @@
+
+.root {
+    margin: 1rem auto;
+    position: relative;
+    max-width: var(--width-large);
+    
+    display: flex;
+    align-items: center;
+}

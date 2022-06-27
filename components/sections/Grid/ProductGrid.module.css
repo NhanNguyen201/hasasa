@@ -3,7 +3,7 @@
     position: relative;
     display: flex;
     margin: 0 auto;
-    padding: 30px;
+    padding: 1rem;
     max-width: var(--width-large);
 }
 

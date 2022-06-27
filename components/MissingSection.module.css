@@ -7,7 +7,7 @@
     justify-content: center;
     font-size: var(--font-title3-size);
     line-height: var(--font-title3-line-height);
-    background-color: aquamarine;
+    background-color: var(--color-accent);
     max-width: var(--width-small);
 }
 .icon {

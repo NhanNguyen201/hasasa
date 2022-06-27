@@ -22,14 +22,15 @@
     height: 100%;
     object-position: center;
     object-fit: cover;
+    transform: none;
 }
 
 .itemFooter {
     padding: 0.5rem;
     box-sizing: border-box;
-    border-left: 0.25px solid rgb(143, 143, 143);
-    border-bottom: 0.25px solid rgb(143, 143, 143);
-    border-right: 0.25px solid rgb(143, 143, 143);
+    border-left: 0.25px solid var(--color-light-gray);
+    border-bottom: 0.25px solid var(--color-light-gray);
+    border-right: 0.25px solid var(--color-light-gray);
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
@@ -39,7 +40,7 @@
     font-size: var(--font-base-size);
     line-height: var(--font-base-line-height);
     word-wrap: break-word;
-    /* white-space: nowrap; */
+    /* var(--color-white)-space: nowrap; */
     text-overflow: ellipsis;
 }
 
@@ -51,7 +52,7 @@
     justify-content: space-between;
 }
 .itemCurrentPrice {
-    color: #ff713d;
+    color: var(--color-orange);
     font-weight: 600;
     font-size: var(--font-base-size);
     line-height: var(--font-base-line-height);
@@ -62,7 +63,7 @@
     text-decoration: line-through;
 }
 .isDiscountedBanner {
-    background: #ff713d;
+    background: var(--color-orange);
     padding: 10px 15px;
     box-sizing: content-box;
     position: absolute;    
@@ -71,7 +72,7 @@
     transition: 1s;
 }
 .isDiscountedBanner span {
-    color: white;
+    color: var(--color-white);
     font-weight: 500;
     font-size: var(--font-large-size);
     line-height: var(--font-large-line-height);
@@ -80,8 +81,9 @@
 .item:hover .itemImg {
     transform: scale(1.1);
 }
+
 .addToCart {
-    background: rgba(0, 0, 0, 0.6);
+    background-color: rgba(var(--color-black-rgb), 0.8) ;
     position: absolute;
     width: 100%;
     box-sizing: border-box;
@@ -99,7 +101,7 @@
     bottom: 0;
 }
 .isFreeShip {
-    color: white;
+    color: var(--color-white);
     font-size: var(--font-base-size);
     line-height: var(--font-base-line-height);
 }
@@ -109,8 +111,8 @@
     border: none;
     padding: 7.5px 15px;
     cursor: pointer;
-    background: #ff713d;
-    color: white;
+    background: var(--color-orange);
+    color: var(--color-white);
 }
 
 
@@ -121,5 +123,5 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(63, 63, 63, 0.7);
+    background-color: var(--color-dark-gray);
 }

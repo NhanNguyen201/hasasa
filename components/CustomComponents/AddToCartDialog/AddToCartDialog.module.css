@@ -1,0 +1,72 @@
+.title {
+    margin-top: 10px;
+    font-size: var(--font-title3-size);
+}
+.image {
+    width: 100%;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.fontSizeBase {
+    font-size: var(--font-base-size);
+
+}
+.redText {
+    color: red;
+    font-weight: 600;
+}
+.lineThroughText {
+    text-decoration: line-through;
+}
+.textInputLabel {
+    font-size: var(--font-base-size);
+    font-weight: 600;
+}
+.noteText {
+    margin-top: 10px;
+    font-size: var(--font-small-size);
+}
+.textInput {
+    font-size: large;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid  var(--color-black);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.submitBtnContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10px;
+}
+
+.submitBtn {
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: var(--color-white);
+    font-size: var(--font-base-size);
+    font-weight: 600;
+    background-color: var(--color-accent);
+    cursor: pointer;
+}   
+.select {
+    padding: 5px 20px;
+    font-size: var(--font-base-size);
+    border: none;
+    outline: none;
+    border-bottom: 1px solid  var(--color-black);
+
+}
+
+.errorOrderMsg {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: var(--font-base-size);
+    font-weight: 600;
+    color: var(--color-orange);
+}

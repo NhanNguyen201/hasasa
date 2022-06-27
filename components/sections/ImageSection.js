@@ -19,6 +19,7 @@ function ImageSection(props) {
           src={urlFor(image).auto('format').width(2000).url()}
           className={styles.image}
           alt={heading}
+          style={{paddingTop: (heading || label || text || cta) ? "6rem" : "0"}}
         />
         <figcaption>
           {(heading || label || text || cta) && <div className={styles.caption}>

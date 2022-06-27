@@ -5,7 +5,7 @@ export const client = sanityClient({
     projectId: process.env.SANITY_PROJECT_ID,
     dataset: "production",
     apiVersion: '2022-05-10',
-    useCdn: true
+    useCdn: false
 })
 
 export const writeClient = sanityClient({

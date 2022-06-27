@@ -1,5 +1,13 @@
-import BaseApp from 'next/app'
+// import BaseApp from 'next/app'
+import { NextUIProvider } from "@nextui-org/react"
+
+import { Provider } from 'react-redux'
 import { client } from '../utils/sanityClient'
+import { useStore } from '../redux/store'
+import theme from '../utils/nextUITheme'
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import muiTheme from "../utils/muiTheme"
+
 import '../styles/shared.module.css'
 import '../styles/layout.css'
 import '../styles/custom-properties.css'
@@ -19,11 +27,25 @@ const siteConfigQuery = `
   }[0]
   `
 
-class App extends BaseApp {
-  static async getInitialProps({Component, ctx}) {
-    let pageProps = {}
 
-    if (Component.getInitialProps) {
+const MyApp = ({ Component, pageProps }) => {
+  const store = useStore(pageProps.initialReduxState)
+
+  return (
+      <NextUIProvider theme={theme}>
+        <MuiThemeProvider theme={muiTheme}>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </MuiThemeProvider>
+      </NextUIProvider>
+  ) 
+}
+
+MyApp.getInitialProps = async({Component, ctx}) => {
+  let pageProps ={};
+
+  if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
 
@@ -38,12 +60,6 @@ class App extends BaseApp {
 
       return {pageProps}
     })
-  }
-
-  render() {
-    const {Component, pageProps} = this.props
-    return <Component {...pageProps} />
-  }
 }
 
-export default App
+export default MyApp

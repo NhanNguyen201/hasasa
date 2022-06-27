@@ -1,0 +1,44 @@
+
+.root {
+    width: 100%;
+    max-width: var(--width-small);
+    margin: auto;
+    padding: 10px;
+}
+.formContainer {
+    padding: 80px;
+}
+.mt-10 {
+    margin-top: 20px;
+
+}
+.textInput {
+    font-size: large;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid  black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.textInputLabel {
+    font-size: var(--font-base-size);
+    font-weight: 600;
+}
+.loginBtnContainer {
+    margin-top: 15px;
+    display: grid;
+    justify-items: center;
+}
+.loginBtn {
+    margin: auto;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: var(--font-base-size);
+    font-weight: 600;
+    background-color: var(--color-accent);
+    cursor: pointer;
+}

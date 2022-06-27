@@ -1,18 +1,14 @@
 @import "../../styles/custom-media.css";
 
 .root {
-  padding: 2rem 0;
-
-  @media (--media-min-medium) {
-    padding: 4rem 0;
-  }
+  padding: 1rem;
 }
 
 .article {
   width: 100%;
   max-width: var(--width-medium);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
