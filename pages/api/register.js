@@ -1,6 +1,6 @@
-import { client } from '../../utils/sanityClient'
+import { client, writeClient } from '../../utils/sanityClient'
 const userDataQuery =  user  => `
-    *[_type == "user" && (userName == '${user.username}' || email == '${user.username}' || phoneNumber == '${user.username}')]{
+    *[_type == "user" && ( email == '${user.email}' || phoneNumber == '${user.phoneNumber}')]{
             _id,
             userName, 
             bioName,
@@ -31,29 +31,43 @@ const registerValidater = userData => {
 export default function (req, res){
     const query = userDataQuery(req.body);
     return new Promise((resolve, reject) => {
-        client.fetch(query)
-            .then(data => {
-                if(data[0]) {
-                    const user = data[0]
-                    const { password } = req.body
-                    if(password === user.password) {
-                        delete user.password
-                        res.status(200).json({user})
+       try {
+            const { valid, errors: inputErrors } = registerValidater(req.body)
+            if( !valid ) {
+                res.status(400).json({error: inputErrors})
+                resolve()
+            } else {
+                client.fetch(query)
+                .then(data => {
+                    if(data[0]) {
+                        res.status(400).json({error: {general: "User is existed"}})
                         resolve()
                     } else {
-                        res.status(401).json({error: "Wrong Credential"})      
-                        resolve()
+                        const doc = {
+                            _type: 'user',
+                            userName: String(req.body.email).split('@')[0],
+                            bioName: String(req.body.bioName),
+                            password: String(req.body.password),
+                            email: String(req.body.email),
+                            address: String(req.body.address),
+                            phoneNumber: String(req.body.phoneNumber),
+                            status: false
+                        }
+                        writeClient.create(doc)
+                            .then(newdoc => {
+                                delete newdoc.password
+                                res.status(200).json({
+                                    user: newdoc
+                                })
+                                resolve()
+                            })
                     }
-                }else {
-                    res.status(404).json({error: "No user found"})
-                    resolve()
-                } 
-            })
-            .catch(sanityErr => {
-                console.log("error: ", sanityErr)
-                res.status(500).json({error: "Something is wrong"})
-                resolve()
+                })
+            }
 
-            })
+       } catch (error) {
+            res.status(500).json({error: {general: "Something is wrong"}})
+            resolve()
+       }
     })
 }

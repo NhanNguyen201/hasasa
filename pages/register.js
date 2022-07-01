@@ -45,10 +45,15 @@ const Register = (props)=> {
         }
         try {
             const res = await (await fetch('/api/register', options)).json()
-            dispatch(loginAction(res.user))
-            router.push('/')
+            if(res.error) {
+                setRegisterError(res.error)
+            } else {
+                dispatch(loginAction(res.user))
+                router.push('/')    
+            }
         }catch(err) {
-            setRegisterError(err.error)
+            setRegisterError({general: "something is wrong"})
+
         }
     }
 
@@ -117,7 +122,7 @@ const Register = (props)=> {
                                 fullWidth
                                 onChange={e => setEmail(e.target.value)}
                                 variant="standard"
-                                error={registerError?.email}
+                                error={!!registerError?.email}
                                 helperText={registerError?.email ?? registerError?.email}
                             />
                         </div>
@@ -129,7 +134,7 @@ const Register = (props)=> {
                                 fullWidth
                                 onChange={e => setPhoneNumber(e.target.value)}
                                 variant="standard"
-                                error={registerError?.phoneNumber}
+                                error={!!registerError?.phoneNumber}
                                 helperText={registerError?.phoneNumber ?? registerError?.phoneNumber}
                             />
                         </div>
@@ -141,7 +146,7 @@ const Register = (props)=> {
                                 fullWidth
                                 onChange={e => setAddress(e.target.value)}
                                 variant="standard"
-                                error={registerError?.address}
+                                error={!!registerError?.address}
                                 helperText={registerError?.address ?? registerError?.address}
                             />
                         </div>
@@ -154,11 +159,14 @@ const Register = (props)=> {
                                 fullWidth
                                 onChange={e => setPassword(e.target.value)}
                                 variant="standard"
-                                error={registerError?.password}
+                                error={!!registerError?.password}
                                 helperText={registerError?.password ?? registerError?.password}
 
                             />
                         </div>
+                        {registerError?.general && <div style={{marginTop: 10, color: 'red'}}>
+                            <Typography variant='p'>{registerError?.general}</Typography>
+                        </div>}
                         <div style={{marginTop: 10}}>
                             <Typography variant='p'>If you already have an account, you can go to <Link href={'/login'}><a>Login</a></Link></Typography>
                         </div>
