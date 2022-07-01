@@ -1,6 +1,6 @@
 import { useState, forwardRef } from 'react'
 import { urlFor } from '../../../utils/sanityClient'
-import { Button, Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,7 +19,7 @@ import MuiAlert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import { RiCloseLine } from 'react-icons/ri'
 import TextField from '@mui/material/TextField';
-
+import Button from '@mui/material/Button'
 import styles from './OrderModal.module.css'
 
 
@@ -41,7 +41,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
     const [address, setAddress] = useState('')
     const [orderNumber, setOrderNumber] = useState(1)
     const [errorMessage, setErrorMessage] = useState('')
-
+    const [buttonLoading, setButtonLoading] = useState(false)
     const [orderMessage, setOrderMessage] = useState("")
     const [isSnackBarBuyingOpen, setIsSnackBarBuyingOpen] = useState(false)
     
@@ -52,6 +52,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
 
     const handleSubmit = async() => {
         // e.preventDefault()
+        setButtonLoading(true)
         if(nameInput && phoneNumber && email && address) {
             const options = {
                 method: 'POST',
@@ -68,6 +69,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                 })
             }
             const res = await (await fetch('/api/order', options)).json()
+            setButtonLoading(false)
             if(res.message) {
                 handleSuccessOrdering(res.message)
                 onRequestClose()
@@ -173,9 +175,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                     </div>}
                 </DialogContent>
                 <DialogActions>
-                    <div className={styles.submitBtnContainer}>
-                        <Button onPress={() => handleSubmit()}>Đặt hàng ngay</Button>
-                    </div>
+                    <Button onClick={() => handleSubmit()} variant="contained" disabled={buttonLoading}>Đặt hàng ngay</Button>
                 </DialogActions>
             </Dialog>
         </>

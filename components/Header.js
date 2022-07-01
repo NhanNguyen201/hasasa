@@ -121,17 +121,17 @@ const Header = props => {
     <AppBar component="nav" position="sticky" sx={{background: "white"}}>
       <Container maxWidth="lg">
       <Toolbar>
-          <Typography
-            variant="p"
-            
+         
+          <Box 
             className={styles.branding}
             sx={{ flexGrow: 1 }}
           >
-            <Link href={'/'}>
-              <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
-            </Link>
-          </Typography>s
-
+            <div style={{display: 'flex'}}>
+              <Link href={'/'}>
+                <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
+              </Link>
+            </div>
+          </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
             <ul className={styles.navItems}>
               {navItems && navItems.map((item) => {

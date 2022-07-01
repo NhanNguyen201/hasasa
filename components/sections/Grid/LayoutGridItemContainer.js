@@ -14,19 +14,18 @@ const LayoutGridItemContainer = (props) => {
     
         return null
     }
-    return (
-        <div> 
-            {props.containerArray.map(containerItem => {
-                const ContainerItemComponent = resolveSections(containerItem)
-                if (!ContainerItemComponent) {
-                    return <MissingSection />
-                }
-                let section = containerItem
-                return <div key={containerItem._key} >
-                    <ContainerItemComponent {...section} />
-                </div>
-            })}
-        </div>
-    )    
+    return <>
+        {props.containerArray.map(containerItem => {
+            const ContainerItemComponent = resolveSections(containerItem)
+            if (!ContainerItemComponent) {
+                return <MissingSection />
+            }
+            let section = containerItem
+            return <div key={containerItem._key} >
+                <ContainerItemComponent {...section} />
+            </div>
+        })}
+    </>
+        
 }
 export default LayoutGridItemContainer;

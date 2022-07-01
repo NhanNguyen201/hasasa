@@ -90,17 +90,21 @@ const BuyButtonSection = ({align, variant, productRef, buttonText}) => {
                 </Popover.Content>
             </Popover>
 
-            {Object.keys(product).length !== 0 && <OrderDialog
-                isOpen={isBuyModalOpen}
-                onRequestClose={() => setIsBuyModalOpen(false)}
-                productItem={product}
-            />}
+            {Object.keys(product).length !== 0 && (
+                <OrderDialog
+                    isOpen={isBuyModalOpen}
+                    onRequestClose={() => setIsBuyModalOpen(false)}
+                    productItem={product}
+                />
+            )}
             
-            {Object.keys(product).length !== 0 && <AddToCartDialog
-                isOpen={isAddModalOpen}
-                onRequestClose={() => setIsAddModalOpen(false)}
-                productItem={product}
-            />}
+            {Object.keys(product).length !== 0 && (
+                <AddToCartDialog
+                    isOpen={isAddModalOpen}
+                    onRequestClose={() => setIsAddModalOpen(false)}
+                    productItem={product}
+                />
+            )}
         </div>
     )
 }   

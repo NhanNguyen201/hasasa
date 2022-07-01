@@ -2,7 +2,7 @@ import { useState, forwardRef } from 'react'
 import { useSelector } from 'react-redux';
 
 import { urlFor } from '../../../utils/sanityClient'
-import { Button, Image } from "@nextui-org/react";
+import {  Image } from "@nextui-org/react";
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -21,6 +21,7 @@ import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import { RiCloseLine } from 'react-icons/ri'
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button'
 import styles from './AddToCartDialog.module.css';
 
 const SlideTransition = (props) => {
@@ -35,6 +36,7 @@ const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 const AddToCartDialog = ({isOpen, onRequestClose, productItem}) => {
     const { userData } = useSelector(state => state.user)
+    const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
     const [addNumber, setAddNumber] = useState(1)
@@ -58,7 +60,9 @@ const AddToCartDialog = ({isOpen, onRequestClose, productItem}) => {
                 quantity: addNumber
             })
         }
+        setLoading(true)
         const res = await (await fetch('/api/cart/add', options)).json()
+        setLoading(false)
         if(res.message) {
             handleSuccessAdding(res.message)
             onRequestClose()
@@ -145,7 +149,7 @@ const AddToCartDialog = ({isOpen, onRequestClose, productItem}) => {
                 </DialogContent>
                 <DialogActions>
                     <div className={styles.submitBtnContainer}>
-                        <Button onPress={() => handleAddToCart()}>Thêm vào giỏ</Button>
+                        <Button onClick={() => handleAddToCart()} disabled={loading} variant="outlined" color='secondary'>Thêm vào giỏ</Button>
                     </div>
                 </DialogActions>
             </Dialog>

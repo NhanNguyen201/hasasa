@@ -13,21 +13,10 @@ const pageFragment = groq`
   ...,
   content[] {
     ...,
-    cta {
-      ...,
-      route->
-    },
-    ctas[] {
-      ...,
-      route->
-    },
     productGridArray[]-> {
       ...,
-      product->,
       productPageRoute->
     },
-    
-    product->
 }`
 
 export const getServerSideProps = async ({params}) => {
@@ -61,7 +50,9 @@ export const getServerSideProps = async ({params}) => {
         }`,
         {possibleSlugs: getSlugVariations(slug)}
       )
-      .then((res) => (res?.page ? {...res.page, slug} : undefined))
+      .then((res) => {
+        return (res?.page ? {...res.page, slug} : undefined)
+      })
   }
 
   if (!data?._type === 'page') {

@@ -18,7 +18,7 @@ import OrderDialog from "../../CustomComponents/OrderDialog";
 import AddToCartDialog from '../../CustomComponents/AddToCartDialog';
 import styles from './ProductGridItem.module.css'
 
-const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '0';
 
 
 const GridItem = ({ gridItem }) => {

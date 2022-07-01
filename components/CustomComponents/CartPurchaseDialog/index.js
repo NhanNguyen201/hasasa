@@ -98,9 +98,7 @@ const CartPurchaseDialog = ({cart = [], isOpen, onRequestClose, onHandlePurchase
                     </Grid>
                 </DialogContent>
                 <DialogActions>
-                    <div >
-                        <Button variant='contained' style={{background: "black"}} onClick={onHandlePurchase}>Thanh toán giỏ hàng</Button>
-                    </div>
+                    <Button variant='contained' style={{background: "black"}} onClick={onHandlePurchase}>Thanh toán giỏ hàng</Button>
                 </DialogActions>
             </Dialog>
            

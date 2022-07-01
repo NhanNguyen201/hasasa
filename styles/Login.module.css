@@ -33,12 +33,4 @@
 }
 .loginBtn {
     margin: auto;
-    padding: 10px 15px;
-    outline: none;
-    border: none;
-    color: white;
-    font-size: var(--font-base-size);
-    font-weight: 600;
-    background-color: var(--color-accent);
-    cursor: pointer;
 }
