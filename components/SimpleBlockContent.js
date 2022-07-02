@@ -14,8 +14,8 @@ function SimpleBlockContent(props) {
     return null
   }
   useEffect(async() => {
-    let marks = []
     console.log("blocks: ", blocks)
+    let marks = []
     for(let i = 0; i < blocks.length; i++) {
       const { markDefs } = blocks[i]
       if(markDefs) {
@@ -76,9 +76,13 @@ function SimpleBlockContent(props) {
             )
           }
         },
-        block: {
-          normal: ({children}) => <p className={styles.normalText}>{children}</p>
+        list: {
+          bullet: ({children}) => <ul>{children}</ul>,
+          number: ({children}) => <ol>{children}</ol>,
         },
+        listItem: {
+          bullet: ({children}) => <li>🔸 {children}</li>,
+        }
       }}
     />
   )
