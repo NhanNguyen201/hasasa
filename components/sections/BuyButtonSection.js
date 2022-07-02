@@ -50,7 +50,7 @@ const BuyButtonSection = ({align, variant, productRef, buttonText}) => {
     }
 
     return (
-        <div className={styles.root} style={{justifyContent: align}}>
+        <div className={styles.root} style={{justifyContent: align || 'flex-start'}}>
             
             <Popover placement='top'  isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
                 <Popover.Trigger>

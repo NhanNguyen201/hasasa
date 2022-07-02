@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { urlFor } from '../../../utils/sanityClient'
 
-import { Row, Col,  User, Text } from "@nextui-org/react";
+import { Col,  User, Text } from "@nextui-org/react";
 import Paper from "@mui/material/Paper";
-import Button  from "@mui/material/Button";
 import dayjs from 'dayjs'
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCartCheck } from 'react-icons/bs'
 import { RiCloseLine } from 'react-icons/ri'
-import Slide from '@mui/material/Slide';
-import MuiAlert from '@mui/material/Alert';
+
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';

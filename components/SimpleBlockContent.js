@@ -15,11 +15,14 @@ function SimpleBlockContent(props) {
   }
   useEffect(async() => {
     let marks = []
+    console.log("blocks: ", blocks)
     for(let i = 0; i < blocks.length; i++) {
       const { markDefs } = blocks[i]
-      for(let j = 0; j < markDefs.length; j++) {
-        if(!marks.find(ele => ele._key === markDefs[j]._key)){
-          marks.push(markDefs[j])
+      if(markDefs) {
+        for(let j = 0; j < markDefs.length; j++) {
+          if(!marks.find(ele => ele._key === markDefs[j]._key)){
+            marks.push(markDefs[j])
+          }
         }
       }
     }
