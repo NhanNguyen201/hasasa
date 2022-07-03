@@ -6,3 +6,6 @@ export { default as Banner } from '../../Banner'
 export { default as BuyButtonSection} from '../../BuyButtonSection'
 export { default as Card } from '../../CardSection'
 export { default as LayoutGridItemContainer } from '../LayoutGridItemContainer'
+
+
+export {default as LayoutGrid} from '../LayoutGrid'
