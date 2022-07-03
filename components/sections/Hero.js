@@ -6,7 +6,7 @@ import SimpleBlockContent from '../SimpleBlockContent'
 
 
 function Hero(props) {
-  const {heading, backgroundImage, tagline, ctas} = props
+  const {heading, backgroundImage, tagline} = props
 
   const style = backgroundImage
     ? {
@@ -28,7 +28,6 @@ Hero.propTypes = {
   heading: PropTypes.string,
   backgroundImage: PropTypes.object,
   tagline: PropTypes.array,
-  ctas: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Hero

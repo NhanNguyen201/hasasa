@@ -36,7 +36,6 @@ function ProductGrid(props) {
 //   heading: PropTypes.string,
 //   backgroundImage: PropTypes.object,
 //   tagline: PropTypes.array,
-//   ctas: PropTypes.arrayOf(PropTypes.object),
 // }
 
 export default ProductGrid
