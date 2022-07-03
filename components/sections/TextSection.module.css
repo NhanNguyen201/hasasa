@@ -6,7 +6,7 @@
 
 .article {
   width: 100%;
-  max-width: var(--width-large);
+  max-width: var(--width-medium);
   margin: 0 auto;
   box-sizing: border-box;
 }
