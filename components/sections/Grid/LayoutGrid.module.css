@@ -4,7 +4,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 1rem auto;
     max-width: var(--width-large);
 }
 

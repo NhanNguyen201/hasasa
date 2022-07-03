@@ -5,20 +5,22 @@ import { urlFor} from '../../utils/sanityClient'
 import SimpleBlockContent from '../SimpleBlockContent'
 
 function ImageSection(props) {
-  const {heading, label, text, image} = props
+  const {heading, label, text, image, isInLayoutGrid} = props
 
   if (!image) {
     return null
   }
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} style={{padding: isInLayoutGrid ? 0 : '1rem'}}>
       <figure className={styles.content}>
         <img
           src={urlFor(image).auto('format').width(2000).url()}
           className={styles.image}
           alt={heading}
-          style={{paddingTop: (heading || label || text ) ? "6rem" : "0"}}
+          style={{
+            paddingTop: (heading || label || text ) ? "6rem" : "0"
+          }}
         />
         <figcaption>
           {(heading || label || text ) && <div className={styles.caption}>
