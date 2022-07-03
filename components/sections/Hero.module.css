@@ -4,12 +4,12 @@
   composes: center from "../../styles/shared.module.css";
   position: relative;
   background-color: var(--color-black, #000);
-  color: var(--color-white, #fff);
+  /* color: var(--color-white, #fff); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   padding-bottom: 2rem;
-
+  padding-top: 6rem;
   @media (--media-min-medium) {
     padding-bottom: 4rem;
   }
@@ -25,10 +25,16 @@
   height: 50%;
   z-index: 0;
 }
-
+.contentContainer {
+  width: 100%;
+  max-width: var(--width-large);
+  background: rgba(255,255,255, 0.65);
+  padding: 1rem;
+}
 .content {
   width: 100%;
-  max-width: var(--width-small);
+  margin: auto;
+  max-width: var(--width-medium);
   padding: 0 1.5em;
   box-sizing: border-box;
 }
@@ -41,12 +47,10 @@
   text-shadow: 0 1px 1px rgba(var(--color-black-rgb), 0.5);
   margin: 0;
   padding: 0;
-  padding-top: 12.5rem;
 
   @media (--media-min-medium) {
     font-size: var(--font-title1-size);
     line-height: var(--font-title1-line-height);
-    padding-top: 15rem;
   }
 }
 
