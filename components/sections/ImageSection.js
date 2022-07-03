@@ -12,7 +12,7 @@ function ImageSection(props) {
   }
 
   return (
-    <div className={styles.root} style={{padding: isInLayoutGrid ? 0 : '1rem'}}>
+    <div className={styles.root} style={{padding: isInLayoutGrid ? "1rem 0" : '1rem'}}>
       <figure className={styles.content}>
         <img
           src={urlFor(image).auto('format').width(2000).url()}
