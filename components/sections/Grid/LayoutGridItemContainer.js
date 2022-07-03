@@ -21,9 +21,7 @@ const LayoutGridItemContainer = (props) => {
                 return <MissingSection />
             }
             let section = containerItem
-            return <div key={containerItem._key} >
-                <ContainerItemComponent {...section} />
-            </div>
+            return <ContainerItemComponent {...section} key={section._key} isInLayoutGrid={true}/>
         })}
     </>
         

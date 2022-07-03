@@ -1,6 +1,7 @@
 
 .root {
     margin: 1rem auto;
+    padding: 0 1rem;
     position: relative;
     max-width: var(--width-large);
     display: flex;

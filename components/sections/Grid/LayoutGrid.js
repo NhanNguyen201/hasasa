@@ -1,15 +1,23 @@
 import styles from './LayoutGrid.module.css'
-import * as LayoutGridItems from './LayoutGridItemChild'
+import * as LayoutGridItemChilds from './LayoutGridItemChild'
 import capitalizeString from '../../../utils/capitalizeString'
 import MissingSection from '../../MissingSection'
-import LayoutGridItem from './LayoutGridItem'
+
+
+const LayoutGridItem = ({itemSize, children}) => {
+    return(
+        <div className={`${styles[`col-${itemSize}`]} ${styles[`md-w100`]} ${styles.item}`}>
+            {children}
+        </div>
+    )
+}
 
 function resolveSections(section) {
     // eslint-disable-next-line import/namespace
-    const Section = LayoutGridItems[capitalizeString(section._type)]
+    const Section = LayoutGridItemChilds[capitalizeString(section._type)]
   
     if (Section) {
-      return Section
+        return Section
     }
     console.error('Cant find section', section) // eslint-disable-line no-console
 
@@ -26,7 +34,7 @@ const LayoutGrid = ({layoutGridArray}) => {
                 }
                 let section = gridItem.itemType[0]
                 return <LayoutGridItem itemSize={gridItem.itemSize} key={gridItem._key} >
-                    <LayoutGridComponent {...section} />
+                    <LayoutGridComponent {...section} isInLayoutGrid={true}/>
                 </LayoutGridItem>
             })}
         </div>

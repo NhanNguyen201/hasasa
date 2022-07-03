@@ -14,7 +14,6 @@ function SimpleBlockContent(props) {
     return null
   }
   useEffect(async() => {
-    console.log("blocks: ", blocks)
     let marks = []
     for(let i = 0; i < blocks.length; i++) {
       const { markDefs } = blocks[i]

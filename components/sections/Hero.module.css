@@ -68,15 +68,6 @@
   margin: 0;
 }
 
-.ctas {
-  margin-top: 3rem;
-  display: flex;
-}
-
-.ctas > *:not(:first-child) {
-  margin-left: 1rem;
-}
-
 .root p a {
   color: inherit;
 }

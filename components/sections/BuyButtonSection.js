@@ -13,7 +13,7 @@ import { BsFillCartCheckFill, BsCartPlusFill } from 'react-icons/bs'
 import OrderDialog from '../CustomComponents/OrderDialog';
 import AddToCartDialog from '../CustomComponents/AddToCartDialog';
 
-const BuyButtonSection = ({align, variant, productRef, buttonText}) => {
+const BuyButtonSection = ({align, variant, productRef, buttonText, isInLayoutGrid}) => {
     const { isLogedIn } = useSelector(state => state.user)
     const [product, setProduct] = useState({})
     const [isLoading, setIsLoading] = useState(false)
@@ -21,7 +21,6 @@ const BuyButtonSection = ({align, variant, productRef, buttonText}) => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false)
     const [isBuyModalOpen, setIsBuyModalOpen] = useState(false)
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-
     const handleOpenPopover = async() => {
         setErrorMessage("")
         setIsPopoverOpen(true)
@@ -50,7 +49,7 @@ const BuyButtonSection = ({align, variant, productRef, buttonText}) => {
     }
 
     return (
-        <div className={styles.root} style={{justifyContent: align || 'flex-start'}}>
+        <div className={styles.root} style={{justifyContent: align || 'flex-start', padding: isInLayoutGrid ? '0' : '0 1rem'}}>
             
             <Popover placement='top'  isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
                 <Popover.Trigger>

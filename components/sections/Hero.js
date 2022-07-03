@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styles from './Hero.module.css'
 import { urlFor } from '../../utils/sanityClient'
 import SimpleBlockContent from '../SimpleBlockContent'
-import Cta from '../Cta'
 
 
 function Hero(props) {
@@ -20,13 +19,6 @@ function Hero(props) {
       <div className={styles.content}>
         <h1 className={styles.title}>{heading}</h1>
         <div className={styles.tagline}>{tagline && <SimpleBlockContent blocks={tagline} />}</div>
-        {ctas && (
-          <div className={styles.ctas}>
-            {ctas.map((cta) => (
-              <Cta {...cta} key={cta._key} />
-            ))}
-          </div>
-        )}
       </div>
     </div>
   )
