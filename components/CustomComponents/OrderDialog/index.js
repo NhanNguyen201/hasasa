@@ -113,8 +113,8 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                     <Image 
                         showSkeleton
                         maxDelay={10000}
-                        src={urlFor(productItem.productImage).width(500).height(200).url() || ""}
-                        height={200}
+                        src={urlFor(productItem.productImage).width(500).height(150).url() || ""}
+                        height={150}
                         objectFit
                         alt="Product Image"
                     />

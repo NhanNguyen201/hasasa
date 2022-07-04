@@ -38,13 +38,15 @@ function SimpleBlockContent(props) {
         let newBlocks = blocks.map(i => i)
         for(let i = 0; i < newBlocks.length; i++) {
           let { markDefs } = newBlocks[i]
-          for(let j = 0; j < markDefs.length; j++) {
-            if(data.find(ele => ele._id === markDefs[j]._ref)){
-              let { slug } = data.find(ele => ele._id === markDefs[j]._ref)
-              markDefs[j].slug = slug
+          if(markDefs) {
+            for(let j = 0; j < markDefs.length; j++) {
+              if(data.find(ele => ele._id === markDefs[j]._ref)){
+                let { slug } = data.find(ele => ele._id === markDefs[j]._ref)
+                markDefs[j].slug = slug
+              }
             }
+            newBlocks[i].markDefs = markDefs
           }
-          newBlocks[i].markDefs = markDefs
         }
         setInternalBlocks(newBlocks)
       })
