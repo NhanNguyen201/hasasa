@@ -76,7 +76,16 @@ function SimpleBlockContent(props) {
               </Link>
             )
           },
-          del: ({children}) => <del>{children}</del>
+          del: ({children}) => <del>{children}</del>,
+          color: (props) => {
+            const { children, value } = props
+
+            return (
+              <span style={{color: value.hex}}>
+                {children}
+              </span>
+            )
+          }
         },
         list: {
           bullet: ({children}) => <ul>{children}</ul>,
