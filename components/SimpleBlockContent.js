@@ -75,7 +75,8 @@ function SimpleBlockContent(props) {
                 </a>
               </Link>
             )
-          }
+          },
+          del: ({children}) => <del>{children}</del>
         },
         list: {
           bullet: ({children}) => <ul>{children}</ul>,
