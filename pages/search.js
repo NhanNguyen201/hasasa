@@ -66,7 +66,7 @@ const Search = props => {
 export async function getServerSideProps({query}) {
     
     let { _q }= query
-    const data = await client.fetch(`*[_type == "product" && title match '${_q}*']{
+    const data = await client.fetch(`*[_type == "product" && title match '${decodeURI(_q)}*']{
         ...,
         productPageRoute->
     }`)

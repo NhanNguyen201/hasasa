@@ -1,10 +1,9 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 // import PropTypes from 'prop-types'
 import Link from 'next/link'
 import {withRouter} from 'next/router'
 import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
-import HamburgerIcon from './icons/Hamburger'
 import {getPathFromSlug, slugParamToPath} from '../utils/urls'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutActions } from '../redux/action'
@@ -23,7 +22,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import  MuiButton from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import { TextField } from '@mui/material'
+import TextField from '@mui/material/TextField';
+import { useRouter } from 'next/router'
 
 const Header = props => {
   const {title = 'Missing title', navItems, router, logo} = props 
@@ -34,6 +34,8 @@ const Header = props => {
   const hideMenu = e => setShowNav(false)
   const handleMenuToggle = e => setShowNav(!showNav)
   const dispatch = useDispatch();
+  const searchTerm = useRef("");
+  // const router = useRouter()
 
   const renderLogo = (logo) => {
     if (!logo || !logo.asset) {
@@ -48,6 +50,10 @@ const Header = props => {
   }
   const handleSignOut = () => {    
     dispatch(logoutActions())
+  }
+  const handleSubmitSearch = e => {
+    e.preventDefault()
+    router.push(`/search?_q=${encodeURI(searchTerm.current)}`)
   }
   const drawer = (
     <Box sx={{ textAlign: 'center' }}>
@@ -127,10 +133,13 @@ const Header = props => {
             className={styles.branding}
             sx={{ flexGrow: 1 }}
           >
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
               <Link href={'/'}>
                 <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
               </Link>
+                <form onSubmit={e => handleSubmitSearch(e)} className={styles.searchBarForm}>
+                  <TextField variant='outlined' label="Search" className={styles.searchBar} onChange={e => searchTerm.current = e.target.value}/>
+                </form>
             </div>
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
@@ -194,7 +203,6 @@ const Header = props => {
             </IconButton>
             <Box component="nav">
               <Drawer
-                // container={window !== undefined ? () => window().document.body : undefined}
                 variant="temporary"
                 open={showNav}
                 onClose={() => handleMenuToggle()}

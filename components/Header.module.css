@@ -175,3 +175,15 @@
     display: none;
   }
 }
+.searchBar {
+  width: 100%;
+}
+
+.searchBarForm {
+  margin-left: 1rem;
+  width: 100%;
+  max-width: var(--width-small);
+  @media (--media-max-medium) {
+    display: none;
+  }
+}
