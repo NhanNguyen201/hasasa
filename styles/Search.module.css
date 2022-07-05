@@ -1,0 +1,9 @@
+.banner {
+    width: 100%;
+    max-width: var(--width-large);
+    margin: auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: black;
+    color: white
+}

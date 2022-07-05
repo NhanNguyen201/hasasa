@@ -3,6 +3,8 @@ import Layout from '../components/Layout'
 import { NextSeo } from 'next-seo'
 import { client } from '../utils/sanityClient'
 import { ProductGrid } from '../components/sections'
+import styles from '../styles/Search.module.css'
+import  Typography  from '@mui/material/Typography'
 const Search = props => {
     const {
         title = 'Search',
@@ -49,8 +51,13 @@ const Search = props => {
                 }}
                 noindex={disallowRobots}
             />
+            <div className={styles.banner}>
+                <Typography variant='h5'>
+                    Kết quả tìm kiếm cho : { queryTerm }
+                </Typography>
+            </div>
             <ProductGrid 
-                productGridArray={queryResult.map(i => i)}
+                productGridArray={queryResult}
                 gridOf={4}
             />
         </Layout>
@@ -58,17 +65,16 @@ const Search = props => {
 }
 export async function getServerSideProps({query}) {
     
-    let { q }= query
-    const data = await client.fetch(`*[_type == "product" && title match '${q}*']{
+    let { _q }= query
+    const data = await client.fetch(`*[_type == "product" && title match '${_q}*']{
         ...,
         productPageRoute->
     }`)
-    console.log("queryTerm", q)
-    console.log("data", data)
+
     return {
         props: {  
-            queryTerm: q,
-            queryResult: data
+            queryTerm: _q || "",
+            queryResult: data.map(i => i)
         }
     }
     
