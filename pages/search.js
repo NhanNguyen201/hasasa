@@ -95,12 +95,10 @@ export async function getServerSideProps({query}) {
     };
     const posibleKeyWords = str => {
         let words = [];
-        let strSplit = str.split(" ")
-        words = words.concat(strSplit)
-        let tidied = strSplit.map(w => tidyAscent(w))
-        words = words.concat(tidied)
-        
+        words = words.concat(str.split(" "))
+        words = words.concat(strSplit.map(w => tidyAscent(w)))        
         words = words.concat(str)
+
         let reducedWords = words.reduce((acc, cur) => {
             if(!acc.find((word) => word == cur)) {
 
@@ -109,14 +107,12 @@ export async function getServerSideProps({query}) {
        }, [])
 
         let mapedWords = reducedWords.map(w => `'${w}*'`)
-        console.log("maped: ", mapedWords)
         return mapedWords
     }
     let productsquery  = `*[_type == "product" && title match [${posibleKeyWords(decodedWord)}]]{
         ...,
         productPageRoute->
     }`
-    console.log("query: ", productsquery)
     const data = await client.fetch(productsquery)
 
     return {
