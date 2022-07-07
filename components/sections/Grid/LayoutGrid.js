@@ -11,6 +11,11 @@ const LayoutGridItem = ({itemSize, children}) => {
         </div>
     )
 }
+const BlankGridItem = ({itemSize}) => {
+    return <div 
+        className={`${styles[`col-${itemSize}`]}`}
+    />
+}
 
 function resolveSections(section) {
     // eslint-disable-next-line import/namespace
@@ -28,6 +33,9 @@ const LayoutGrid = ({layoutGridArray}) => {
     return (
         <div className={styles.root}>
             {layoutGridArray.map(gridItem => {
+                if(!gridItem.itemType) {
+                    return <BlankGridItem itemSize={gridItem.itemSize} key={gridItem._key} />
+                }
                 const LayoutGridComponent = resolveSections(gridItem.itemType[0])
                 if (!LayoutGridComponent) {
                     return <MissingSection />

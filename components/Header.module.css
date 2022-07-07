@@ -180,9 +180,9 @@
 }
 
 .searchBarForm {
-  margin-left: 1rem;
+  margin-left: 2rem;
   width: 100%;
-  max-width: var(--width-small);
+  max-width: var(--width-x-small);
   @media (--media-max-medium) {
     display: none;
   }

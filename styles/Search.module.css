@@ -3,7 +3,7 @@
     max-width: var(--width-large);
     margin: auto;
     margin-top: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     background: black;
     color: white
 }

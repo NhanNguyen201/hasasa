@@ -23,7 +23,8 @@ import Toolbar from '@mui/material/Toolbar';
 import  MuiButton from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
-import { useRouter } from 'next/router'
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Header = props => {
   const {title = 'Missing title', navItems, router, logo} = props 
@@ -138,7 +139,19 @@ const Header = props => {
                 <a title={title} className={styles.navItemLink}>{renderLogo(logo)}</a>
               </Link>
                 <form onSubmit={e => handleSubmitSearch(e)} className={styles.searchBarForm}>
-                  <TextField variant='outlined' label="Search" className={styles.searchBar} onChange={e => searchTerm.current = e.target.value}/>
+                  <TextField 
+                    hiddenLabel
+                    variant='outlined' 
+                    className={styles.searchBar}
+                    onChange={e => searchTerm.current = e.target.value}
+                    InputProps={{
+                      startAdornment : (
+                        <InputAdornment position="start">
+                          <SearchIcon fontSize="small" color='secondary'/>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
                 </form>
             </div>
           </Box>
