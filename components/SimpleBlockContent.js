@@ -76,6 +76,9 @@ function SimpleBlockContent(props) {
               </Link>
             )
           },
+          link: (props) => {
+            return <a href={props.value.href} className={styles.navItemLink} style={{textDecoration: 'underline'}}>{props.children}</a>
+          },
           del: ({children}) => <del>{children}</del>,
           color: (props) => {
             const { children, value } = props

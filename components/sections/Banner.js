@@ -9,7 +9,7 @@ const Banner = (props) => {
     }
     return (
         <div className={styles.root}>
-            <div className={styles.textContainer} style={{backgroundColor: backgroundColor?.hex || 'black', color: textColor?.hex || 'white', padding: isInLayoutGrid ? '1rem' : '0.5rem 2rem'}}>
+            <div className={styles.textContainer} style={{backgroundColor: backgroundColor?.hex || 'black', color: textColor?.hex || 'white'}}>
                 {text && <SimpleBlockContent blocks={text} />}
             </div>
         </div>

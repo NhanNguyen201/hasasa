@@ -96,7 +96,7 @@ export async function getServerSideProps({query}) {
     const posibleKeyWords = str => {
         let words = [];
         words = words.concat(str.split(" "))
-        words = words.concat(strSplit.map(w => tidyAscent(w)))        
+        words = words.concat(str.split(" ").map(w => tidyAscent(w)))        
         words = words.concat(str)
 
         let reducedWords = words.reduce((acc, cur) => {
