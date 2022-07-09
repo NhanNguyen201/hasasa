@@ -4,11 +4,8 @@
     padding: 0;
     margin: 0 auto;
     width: 280px;
-    max-width: 280px;
-    min-width: 280px;
-    height: 350px;
-    max-height: 350px;
-    margin-bottom: 2rem;
+    height: 360px;
+    margin-bottom: 3rem;
     position: relative;
 }
 .imageContainer {
@@ -46,6 +43,7 @@
 
 .itemPrices {
     box-sizing: border-box;
+    margin-top: 0.5rem;
     padding: 10px;
     display: flex;
     flex-direction: row-reverse;
