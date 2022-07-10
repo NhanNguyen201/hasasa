@@ -29,9 +29,8 @@
 .image {
   display: block;
   width: 100%;
-  @media (--media-min-medium) {
-    margin-top: 3rem;
-  }
+ 
+  
 }
 
 .content {

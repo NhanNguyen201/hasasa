@@ -25,7 +25,10 @@
 .image {
   display: block;
   width: 100%;
-  /* padding-top: 6rem; */
+  padding-top: 3rem;
+  @media (--media-max-medium) {
+    padding-top: 0;
+  }
 }
 
 .content {
@@ -60,7 +63,7 @@
 .captionBox {
   margin: auto;
   position: relative;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 1rem 1.5rem;
   max-width: calc((var(--width-medium) / 2) - 3rem);
   @media (--media-max-medium) {

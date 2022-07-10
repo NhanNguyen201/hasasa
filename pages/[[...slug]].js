@@ -106,6 +106,7 @@ const LandingPage = (props) => {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    console.log("content is: ", content)
     if(!isLogedIn) {
       const user = localStorage.getItem('hasasaUserData') && JSON.parse(localStorage.getItem('hasasaUserData')) 
       if(user) {

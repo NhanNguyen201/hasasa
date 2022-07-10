@@ -1,20 +1,12 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import Mansonry from 'react-masonry-css'
-import styles from './GridProductGrid.module.css'
-import GridItem from '../ProductGridItem'
-import { client } from '../../../../utils/sanityClient'
 
+import { client } from '../../../../utils/sanityClient'
+import LargeProductGrid from '../ProductGrid'
 
 function ProductGrid(props) {
     const { productGridArray, gridOf } = props
     const [products, setProducts] = useState([])
 
-    const breakPointsObj = {
-        default: gridOf,
-        1200 : gridOf >= 2 ? 2 : gridOf, 
-        1000 : 1
-    }
     useEffect(() => {
         const productids = productGridArray.map(each => `'${each._ref}'`)
         client.fetch(`*[_type == "product" && _id in [${productids}]]{
@@ -26,9 +18,10 @@ function ProductGrid(props) {
         })
     }, [productGridArray])
     return (
-        <Mansonry breakpointCols={breakPointsObj} className={styles.root} >
-            {products.map((gridItem, idx) => <GridItem gridItem={gridItem} key={idx}/>)}
-        </Mansonry>
+        <LargeProductGrid 
+            productGridArray={products}
+            gridOf={gridOf}
+        />
     )
 }
 
