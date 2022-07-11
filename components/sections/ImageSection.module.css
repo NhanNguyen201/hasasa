@@ -30,7 +30,11 @@
     padding-top: 0;
   }
 }
-
+.imageNoPadding {
+  display: block;
+  width: 100%;
+  
+}
 .content {
   position: relative;
   /* margin: 0 1.5rem; */

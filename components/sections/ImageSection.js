@@ -17,7 +17,7 @@ function ImageSection(props) {
         <img
           src={urlFor(image).auto('format').width(2000).url()}
           
-          className={styles.image}
+          className={(heading || label || text) ? styles.image : styles.imageNoPadding }
           alt={heading}
         />
         <figcaption>
