@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react'; 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
 
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import styles from './CardSection.module.css'
 import { urlFor, client } from '../../utils/sanityClient';
@@ -21,21 +17,21 @@ const CardSection = ({cardTitle, cardContent, cardImage, route }) => {
     }, [route])
     return(
         <div className={styles.root}>
-             <Card sx={{ maxWidth: 345 }} className={styles.card}>
-                <CardMedia
-                    component="img"
-                    height="200"
-                    image={urlFor(cardImage).height(200).fit("crop").crop('focalpoint').url()}
-                    alt="card media"
+            <div className={styles.card}>
+                <img 
+                    src={urlFor(cardImage).width(600).crop('focalpoint').url()}
+                    alt="card image"
+                    className={styles.image}
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                <div
+                    className={styles.cardContent}
+                >
+                    <Typography gutterBottom variant="h5" component="div" >
                         {Object.keys(pageRoute).length > 0 ? <Link href={`/${pageRoute.slug.current}`}><a style={{color: 'black'}}>{cardTitle}</a></Link> : cardTitle}
                     </Typography>
-                    <Typography variant="body2">{cardContent}</Typography>
-                </CardContent>
-
-            </Card>
+                    <Typography variant="body2" >{cardContent}</Typography>
+                </div>
+            </div>
         </div>
     )
 }
