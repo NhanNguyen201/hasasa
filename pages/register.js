@@ -47,7 +47,7 @@ const Register = (props)=> {
             const res = await (await fetch('/api/register', options)).json()
             if(res.error) {
                 setRegisterError(res.error)
-            } else {
+            } else if(res.user){
                 dispatch(loginAction(res.user))
                 router.push('/')    
             }

@@ -120,37 +120,39 @@ const CartTable = ({ cart }) => {
                 newCart: internalCart
             }),
         }
-        try {
-            const res = await (await fetch(`/api/cart/save?_cartId=${cartId}`, options)).json()
+        const res = await (await fetch(`/api/cart/save?_cartId=${cartId}`, options)).json()
+        if(res.error) {
+            setError(res.error)
+
+        } else if(res.message){
             setSaveMessage(res.message)
             setSaveSnackBarOpen(true)
-        }catch(err) {
-            setError(err.error)
         }
+        
     }
     const handlePurchase = async() => {
-        try {
-            const options = {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userId: userData._id, 
-                    cart: internalCart
-                })
-            }
-            const res = await(await fetch(`/api/cart/purchase?_cartId=${cartId}`, options)).json()
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userData._id, 
+                cart: internalCart
+            })
+        }
+        
+        const res = await(await fetch(`/api/cart/purchase?_cartId=${cartId}`, options)).json()
+        if(res.error){
+            setError(res.error)
+        } else if(res.message) {
             setPurchaseMessage(res.message)
             setPurchaseSnackBarOpen(true)
             setPaymentDialogOpen(false)
 
             setInternalCart([])
-        } catch (err) {
-            console.log("error: ", err)
-            setError(err.error)
-            
         }
+        
 
     }
 

@@ -33,13 +33,13 @@ const Login = (props)=> {
             },
             body: JSON.stringify({username, password}),
         }
-        try {
-            const res = await (await fetch('/api/login', options)).json()
+        const res = await (await fetch('/api/login', options)).json()
+        if(res.error){
+            setLoginError(res.error)
+        } else if(res.user){
             dispatch(loginAction(res.user))
             // console.log("user: ", res.user)
             router.push('/')
-        }catch(err) {
-            setLoginError(err.error)
         }
     }
 

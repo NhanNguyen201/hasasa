@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, useEffect } from 'react'
 import { urlFor } from '../../../utils/sanityClient'
 import { Image } from "@nextui-org/react";
 
@@ -40,7 +40,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
     const [email, setEmail] = useState('')
     const [address, setAddress] = useState('')
     const [orderNumber, setOrderNumber] = useState(1)
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorOrdering, setErrorOrdering] = useState({})
     const [buttonLoading, setButtonLoading] = useState(false)
     const [orderMessage, setOrderMessage] = useState("")
     const [isSnackBarBuyingOpen, setIsSnackBarBuyingOpen] = useState(false)
@@ -52,31 +52,35 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
 
     const handleSubmit = async() => {
         // e.preventDefault()
+        console.log("submit: ")
         setButtonLoading(true)
-        if(nameInput && phoneNumber && email && address) {
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    nameInput, 
-                    phoneNumber,
-                    email,
-                    address,
-                    productItem,
-                    orderNumber
-                })
-            }
-            const res = await (await fetch('/api/order', options)).json()
-            setButtonLoading(false)
-            if(res.message) {
-                handleSuccessOrdering(res.message)
-                onRequestClose()
-            } else if(res.error) {
-                setErrorMessage(res.error)
-            }
+        setErrorOrdering({})
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nameInput, 
+                phoneNumber,
+                email,
+                address,
+                productItem,
+                orderNumber
+            })
         }
+        const res = await(await fetch('/api/order', options)).json()
+        setButtonLoading(false)
+        if(res.error){
+            setErrorOrdering(res.error)
+        } else if(res.message){
+            handleSuccessOrdering(res.message)
+        }
+        setTimeout(() => {
+            onRequestClose()
+            setErrorOrdering({})
+        }, 3000)
+        
     }
     return (
         <>
@@ -131,13 +135,47 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                     )}
                     <div className={styles.noteText}>Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất</div>
                     
-                    <TextField style={{marginTop: 10}} label="Tên" variant="outlined" onChange={e => setNameInput(e.target.value)} value={nameInput} fullWidth/>
+                    <TextField 
+                        style={{marginTop: 10}} 
+                        label="Tên" 
+                        variant="outlined" 
+                        onChange={e => setNameInput(e.target.value)} 
+                        value={nameInput} fullWidth
+                        error={!!errorOrdering?.nameInput}
+                        helperText={errorOrdering?.nameInput ?? errorOrdering?.nameInput}
+                    />
                     
-                    <TextField style={{marginTop: 10}} label="Sđt" variant="outlined" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber} fullWidth/>
+                    <TextField 
+                        style={{marginTop: 10}} 
+                        label="Sđt" 
+                        variant="outlined" 
+                        onChange={e => setPhoneNumber(e.target.value)} 
+                        value={phoneNumber} 
+                        fullWidth
+                        error={!!errorOrdering?.phoneNumber}
+                        helperText={errorOrdering?.phoneNumber ?? errorOrdering?.phoneNumber}
+                    />
                     
-                    <TextField style={{marginTop: 10}} label="Email" variant="outlined" onChange={e => setEmail(e.target.value)} value={email} fullWidth/>
+                    <TextField 
+                        style={{marginTop: 10}} 
+                        label="Email" 
+                        variant="outlined" 
+                        onChange={e => setEmail(e.target.value)} 
+                        value={email} 
+                        fullWidth
+                        error={!!errorOrdering?.email}
+                        helperText={errorOrdering?.email ?? errorOrdering?.email}
+                    />
                     
-                    <TextField style={{marginTop: 10}} label="Địa chỉ" variant="outlined" onChange={e => setAddress(e.target.value)} value={address} fullWidth/>
+                    <TextField 
+                        style={{marginTop: 10}} 
+                        label="Địa chỉ" 
+                        variant="outlined" 
+                        onChange={e => setAddress(e.target.value)} 
+                        value={address} fullWidth
+                        error={!!errorOrdering?.address}
+                        helperText={errorOrdering?.address ?? errorOrdering?.address}
+                    />
 
                     <Grid
                         container 
@@ -170,9 +208,7 @@ const OrderModal = ({isOpen, onRequestClose, productItem}) => {
                             />
                         </Grid>
                     </Grid> 
-                    {errorMessage && <div className={styles.errorOrderMsg}>
-                        {errorMessage}    
-                    </div>}
+                    
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => handleSubmit()} variant="contained" disabled={buttonLoading}>Đặt hàng ngay</Button>

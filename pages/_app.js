@@ -6,6 +6,7 @@ import { client } from '../utils/sanityClient'
 import { useStore } from '../redux/store'
 import theme from '../utils/nextUITheme'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+
 import muiTheme from "../utils/muiTheme"
 
 import '../styles/shared.module.css'
@@ -14,7 +15,7 @@ import '../styles/custom-properties.css'
 
 const siteConfigQuery = `
   *[_type == "site-config"] {
-    ...,
+    ..., 
     logo {asset->{extension, url}},
     mainNavigation[] -> {
       ...,
@@ -43,7 +44,7 @@ const MyApp = ({ Component, pageProps }) => {
 }
 
 MyApp.getInitialProps = async({Component, ctx}) => {
-  let pageProps ={};
+  let pageProps = {};
 
   if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
