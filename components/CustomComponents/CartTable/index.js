@@ -149,7 +149,6 @@ const CartTable = ({ cart }) => {
             setPurchaseMessage(res.message)
             setPurchaseSnackBarOpen(true)
             setPaymentDialogOpen(false)
-
             setInternalCart([])
         }
         
